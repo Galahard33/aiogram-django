@@ -11,6 +11,7 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from django.core.asgi import get_asgi_application
 from dotenv import load_dotenv
 
+from apps.hidden_app.set_bot_commands import set_default_commands
 from apps.core.web.middlewares import InjectMiddleware
 from config.apps import register_apps
 
@@ -44,6 +45,7 @@ class MyBot:
 
     @staticmethod
     async def on_startup(dp: Dispatcher):
+        await set_default_commands(dp)
         await register_apps(dp)
 
     @staticmethod
@@ -79,7 +81,7 @@ def run_app():
     server = Process(target=MyServer.run)
 
     bot.start()
-    server.start()
+    #server.start()
 
 
 if __name__ == "__main__":

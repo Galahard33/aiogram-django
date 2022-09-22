@@ -20,5 +20,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path("core/", include("apps.core.web.urls")),
+    path("hidden_app/", include("apps.hidden_app.web.urls")),
     path("admin/", admin.site.urls),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

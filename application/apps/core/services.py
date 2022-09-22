@@ -8,3 +8,7 @@ async def add_user(tg_id: int, chat_id: int, first_name: str) -> Tuple[models.Us
     return await models.User.get_or_create(
         tg_id=tg_id, chat_id=chat_id, first_name=first_name
     )
+
+
+async def get_user() -> [models.User]:
+    return await models.User.all()
